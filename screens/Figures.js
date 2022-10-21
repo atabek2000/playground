@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react';
+// керекті кітапханаларды жүктеп аламыз
+import React, { useState } from 'react';
 import { View, Text, FlatList, RefreshControl, Image, StyleSheet, ActivityIndicator, SliderComponent, TouchableOpacity } from 'react-native';
-import axios from 'axios';
 import * as Speech from 'expo-speech'
 
 export default function Figures() {
@@ -9,7 +9,7 @@ export default function Figures() {
   
   const [items, setItems] = React.useState();
 
-
+ // ойын деректеріні беруге функция
   const fetchItems = () => {
     setIsLoading(true)
     const data = [
@@ -59,6 +59,7 @@ export default function Figures() {
     
   }
 
+  // стилдерді береміз
   const styles = StyleSheet.create({
     imageView: {
       margin: 10,
@@ -80,7 +81,7 @@ export default function Figures() {
   })
 
   React.useEffect(fetchItems, [])
-  
+   // декректер жүктеліп жатқанда көрсетілетін анимация
   if (isLoading) {
     return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <ActivityIndicator size="large"/>
@@ -88,7 +89,7 @@ export default function Figures() {
     </View>
   }
 
-  
+  // ойын карталары бар бет
   return (
     <View>
       <FlatList

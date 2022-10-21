@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, {  useState } from 'react';
 import { View, Text, FlatList, RefreshControl, Image, StyleSheet, ActivityIndicator, SliderComponent, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import * as Speech from 'expo-speech'

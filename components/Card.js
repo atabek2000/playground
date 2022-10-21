@@ -1,9 +1,6 @@
+// керекті кітапханаларды жүктеп аламыз
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import styled from 'styled-components/native'
-
-
-
 
 export default class Card extends Component {
     constructor(props) {
@@ -11,6 +8,7 @@ export default class Card extends Component {
         
       }
 
+// стилдерді береміз 
       styles = StyleSheet.create({
         styledCard: {
             width: '100%',
@@ -43,7 +41,7 @@ export default class Card extends Component {
             padding: 5
         }
       }); 
-
+// ойын атауы бар карта
   render() {
     return (
         <TouchableOpacity style={this.styles.touchView} onPress={() => this.props.navigation.navigate(this.props.text)}>

@@ -26,7 +26,6 @@ export default function App() {
           <Stack.Screen name={'Animals'} component={Animals} options={{title: 'Animals'}}></Stack.Screen>
           <Stack.Screen name={'Weathers'} component={Weathers} options={{title: 'Weathers'}}></Stack.Screen>
           <Stack.Screen name={'Fruits'} component={Fruits} options={{title: 'Fruits'}}></Stack.Screen>
-          
       </Stack.Navigator>
   </NavigationContainer>
   );

@@ -1,7 +1,17 @@
-import React, { Component, useState } from 'react';
-import { View, Text, FlatList, RefreshControl, Image, StyleSheet, ActivityIndicator, SliderComponent, TouchableOpacity } from 'react-native';
-import axios from 'axios';
-import * as Speech from 'expo-speech'
+// керекті кітапханаларды жүктеп аламыз
+import React, { useState } from 'react'; // реакт кітапханасыа алынатын модульдер
+// react native кітапханасынан алынатын модульдер
+import { View, Text, FlatList, RefreshControl, Image, StyleSheet, ActivityIndicator, TouchableOpacity } from 'react-native'; 
+// View - html дегі div ке ұқсас блок
+// Text - тексттік мәндерді шығаруға арналған блок
+// FlatList - айналдырылатын элементтер блогы
+// RefreshControl - қосымшаны жаңарту блогы
+// Image - сүреттерді шығаруға арналған блок 
+// StyleSheet - стильдерді беруге арналған функция
+// TouchableOpacity - басылатын (таңдалатын) элементтерді жасау блогы
+
+import axios from 'axios'; // серверге сұрау жіберу үшін қолданылатын модул
+import * as Speech from 'expo-speech' // текстті сөзге айналдыруға арналған модул
 
 export default function Animals() {
   
@@ -9,7 +19,7 @@ export default function Animals() {
   
   const [items, setItems] = React.useState();
 
-
+  // ойын деректеріні серверден алуға арналған функция
   const fetchItems = () => {
     setIsLoading(true)
     axios.get('https://634e42e9f34e1ed82686b739.mockapi.io/api/animals').
@@ -23,6 +33,7 @@ export default function Animals() {
     
   }
 
+  // стилдерді береміз
   const styles = StyleSheet.create({
     imageView: {
       margin: 10,
@@ -44,7 +55,7 @@ export default function Animals() {
   })
 
   React.useEffect(fetchItems, [])
-  
+  // декректер жүктеліп жатқанда көрсетілетін анимация
   if (isLoading) {
     return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <ActivityIndicator size="large"/>
@@ -52,7 +63,7 @@ export default function Animals() {
     </View>
   }
 
-  
+  // ойын карталараы бар бет
   return (
     <View>
       <FlatList

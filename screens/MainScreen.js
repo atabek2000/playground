@@ -1,18 +1,10 @@
+// керекті кітапханаларды жүктеп аламыз
 import axios from 'axios';
-import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StatusBar, TouchableOpacity, FlatList, RefreshControl, StyleSheet, ActivityIndicator } from 'react-native';
-import styled from 'styled-components/native'
+import React, { useEffect, useState } from 'react';
+import { View, Text, FlatList, RefreshControl, StyleSheet, ActivityIndicator } from 'react-native';
 import Card from '../components/Card';
 
-
-// const CardBlock = styled.View`
-//     padding: 10px;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     flex-wrap: wrap;
-// `
-
+// стилдерді береміз 
 const styles = StyleSheet.create({
   flatList: {
     padding: 10,
@@ -22,14 +14,14 @@ const styles = StyleSheet.create({
   }
 })
 
-
+// функцияны құрамыз 
 export default function MainScreen({navigation}) { 
-  
+  // керекті айнымалылар
   const [isLoading, setIsLoading] = useState(true)
   
   const [games, setGames] = React.useState();
 
-
+  // ойын атауларыны серверден алуға арналған функция
   const fetchGames = () => {
     setIsLoading(true)
     axios.get('https://634e42e9f34e1ed82686b739.mockapi.io/api/games').
@@ -43,8 +35,10 @@ export default function MainScreen({navigation}) {
     
   }
 
+  // ойын атауларыны серверден алу
   useEffect(fetchGames, [])
     
+  // атаулары жүктеліп жатқанда көрсетілетін анимация
     if (isLoading) {
       return <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
         <ActivityIndicator size="large"/>
@@ -52,6 +46,7 @@ export default function MainScreen({navigation}) {
       </View>
     }
 
+    // ойын атаулары бар бет
     return (
       <View style={{backgroundColor: 'lightblue', height: '100%'}}>
         
